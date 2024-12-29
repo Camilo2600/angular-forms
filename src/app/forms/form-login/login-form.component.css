@@ -1,0 +1,112 @@
+
+      [nz-form] {
+        max-width: 600px;
+      }
+
+      .ant-select.ant-select-in-form-item.phone-select {
+        width: 80px;
+      }
+
+      .register-area {
+        margin-bottom: 8px;
+      }
+
+body {
+  background-color: #080710;
+}
+
+
+.background {
+  width: 430px;
+  height: 520px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+.background .shape {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.background .shape:first-child {
+  background: linear-gradient(#1845ad, #23a2f6);
+  left: -80px;
+  top: -80px;
+}
+
+.background .shape:last-child {
+  background: linear-gradient(to right, #ff512f, #f09819);
+  right: -30px;
+  bottom: -80px;
+}
+
+/* Estilo para el formulario */
+.glass-form {
+  height: 520px;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.13);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;
+  display: flex;
+  flex-direction: column;
+}
+
+.glass-form h3 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.glass-form nz-form-item {
+  margin-top: 30px;
+}
+
+.glass-form input::placeholder {
+  color: #e5e5e5;
+}
+
+.glass-form button {
+  margin-top: 50px;
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.glass-form .social {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.glass-form .social div {
+  background-color: rgba(255, 255, 255, 0.27);
+  color: #eaf0fb;
+  text-align: center;
+  padding: 10px;
+  border-radius: 3px;
+  width: 45%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.glass-form .social div:hover {
+  background-color: rgba(255, 255, 255, 0.47);
+}

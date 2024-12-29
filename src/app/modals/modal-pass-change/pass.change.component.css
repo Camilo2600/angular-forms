@@ -1,0 +1,14 @@
+form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  input.nz-input {
+    width: 100%;
+    padding: 8px;
+  }
+  
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+  

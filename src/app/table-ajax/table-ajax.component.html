@@ -1,0 +1,47 @@
+<div class="table-container">
+  <nz-table
+    nzShowSizeChanger
+    [nzData]="pokemonList"
+    [nzFrontPagination]="false"
+    [nzLoading]="loading"
+    [nzTotal]="total"
+    [nzPageSize]="pageSize"
+    [nzPageIndex]="pageIndex"
+    (nzQueryParams)="onQueryParamsChange($event)"
+  >
+    <thead>
+      <tr>
+        <th nzColumnKey="name">Nombre</th>
+        <th nzColumnKey="stats">Estadisticas</th>
+        <th nzColumnKey="abilities">Habilidades</th>
+        <th nzColumnKey="moves">Movimientos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pokemon of pokemonList">
+        <td>{{ pokemon.name }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let stat of pokemon.stats">
+              {{ stat.name }}: {{ stat.value }}
+            </li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li *ngFor="let ability of pokemon.abilities">
+              {{ ability }}
+            </li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li *ngFor="let move of pokemon.moves">
+              {{ move }}
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

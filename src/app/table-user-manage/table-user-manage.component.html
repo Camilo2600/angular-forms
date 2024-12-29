@@ -1,0 +1,86 @@
+<!-- Tabla de Clientes -->
+<nz-table #basicTable [nzData]="listOfData" [nzBordered]="true">
+  <thead>
+    <tr>
+      <th>Cédula</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Sexo</th>
+      <th>Cargo</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data" [class.inactive]="data.estado === 'inactivo'">
+      <td>{{ data.cedula }}</td>
+      <td>{{ data.nombre }}</td>
+      <td>{{ data.apellido }}</td>
+      <td>{{ data.sexo }}</td>
+      <td>{{ data.cargo }}</td>
+      <td>{{ data.estado | titlecase }}</td>
+      <td>
+        <button nz-button (click)="editClient(data)">Editar</button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button nz-button (click)="deleteClient(data)">Eliminar</button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button nz-button (click)="toggleStatus(data)">
+          {{ data.estado === 'activo' ? 'Desactivar' : 'Activar' }}
+        </button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button nz-button (click)="showModal(data)">Cambiar Cargo</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<!-- Formulario de Cliente -->
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()" nz-form [nzLayout]="'vertical'">
+  <nz-form-item>
+    <nz-form-label [nzFor]="'cedula'" [nzRequired]="true">Cédula</nz-form-label>
+    <nz-form-control [nzErrorTip]="'Cédula inválida'">
+      <input id="cedula" nz-input formControlName="cedula" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzFor]="'nombre'" [nzRequired]="true">Nombre</nz-form-label>
+    <nz-form-control [nzErrorTip]="'Nombre inválido'">
+      <input id="nombre" nz-input formControlName="nombre" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzFor]="'apellido'" [nzRequired]="true">Apellido</nz-form-label>
+    <nz-form-control [nzErrorTip]="'Apellido inválido'">
+      <input id="apellido" nz-input formControlName="apellido" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzFor]="'sexo'" [nzRequired]="true">Sexo</nz-form-label>
+    <nz-form-control [nzErrorTip]="'Seleccione el sexo'">
+      <select id="sexo" nz-input formControlName="sexo">
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+      </select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <button nz-button type="submit" [disabled]="clientForm.invalid">
+    {{ isEditing ? 'Editar Cliente' : 'Añadir Cliente' }}
+  </button>
+</form>
+
+<!-- Modal para cambiar el cargo -->
+<nz-modal 
+  [nzVisible]="isModalVisible" 
+  [nzTitle]="'Cambiar Cargo'" 
+  (nzOnCancel)="handleCancel()" 
+  (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+    <nz-select [(ngModel)]="selectedCargo">
+      <nz-option *ngFor="let cargo of cargos" [nzValue]="cargo" [nzLabel]="cargo"></nz-option>
+    </nz-select>
+  </ng-container>
+</nz-modal>

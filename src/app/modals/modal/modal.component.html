@@ -1,0 +1,13 @@
+<nz-modal 
+  [nzVisible]="true" 
+  [nzTitle]="pokemonName | titlecase" 
+  (nzOnCancel)="handleClose()" 
+  (nzOnOk)="handleClose()">
+  <ng-container *nzModalContent>
+    <p>ID: {{ evolutionId }}</p>
+    <img [src]="details?.sprites?.front_default" alt="{{ pokemonName }}" style="width: 150px;" />
+    <p *ngIf="pokemonTypes">Tipo: {{ pokemonTypes }}</p>
+    <p *ngIf="details?.height">Altura: {{ details.height / 10 }} m</p>
+    <p *ngIf="details?.weight">Peso: {{ details.weight / 10 }} kg</p>
+  </ng-container>
+</nz-modal>

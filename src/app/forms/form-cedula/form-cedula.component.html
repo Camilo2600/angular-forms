@@ -1,0 +1,103 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <!-- Apellido -->
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="lastName">Apellido</nz-form-label>
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      [nzErrorTip]="lastNameErrorTpl">
+      <input nz-input formControlName="lastName" id="lastName" />
+      <ng-template #lastNameErrorTpl let-control>
+        @if (control.errors?.['required']) {
+          El apellido es obligatorio.
+        }
+        @if (control.errors?.['notUppercase']) {
+          El apellido debe estar en mayúsculas.
+        }
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- Nombre -->
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="firstName">Nombre</nz-form-label>
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      [nzErrorTip]="firstNameErrorTpl">
+      <input nz-input formControlName="firstName" id="firstName" />
+      <ng-template #firstNameErrorTpl let-control>
+        @if (control.errors?.['required']) {
+          El nombre es obligatorio.
+        }
+        @if (control.errors?.['notUppercase']) {
+          El nombre debe estar en mayúsculas.
+        }
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- Cédula/RUC-->
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="id">Cédula/RUC</nz-form-label>
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      [nzErrorTip]="idErrorTpl">
+      <input nz-input formControlName="id" id="id" />
+      <ng-template #idErrorTpl let-control>
+        @if (control.errors?.['required']) {
+          La identificación es obligatoria.
+        }
+        @if (control.errors?.['invalidId']) {
+          Identificación inválida. Use cédula de 10 dígitos o RUC de 13 dígitos que termine en 001.
+        }
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- Teléfono -->
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="phoneNumber">Teléfono</nz-form-label>
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      [nzErrorTip]="phoneErrorTpl">
+      <input nz-input formControlName="phoneNumber" id="phoneNumber" />
+      <ng-template #phoneErrorTpl let-control>
+        @if (control.errors?.['required']) {
+          El número de teléfono es obligatorio.
+        }
+        @if (control.errors?.['invalidPhoneNumber']) {
+          El número de teléfono debe tener exactamente 9 dígitos.
+        }
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- Sexo -->
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="gender">Sexo</nz-form-label>
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      [nzErrorTip]="genderErrorTpl">
+      <nz-select formControlName="gender" id="gender">
+        <nz-option nzValue="M" nzLabel="Masculino"></nz-option>
+        <nz-option nzValue="F" nzLabel="Femenino"></nz-option>
+      </nz-select>
+      <ng-template #genderErrorTpl let-control>
+        @if (control.errors?.['required']) {
+          Por favor seleccione su género.
+        }
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- Botón -->
+  <nz-form-item nz-row>
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary" [disabled]="!validateForm.valid">Enviar</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

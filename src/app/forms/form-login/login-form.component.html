@@ -1,0 +1,33 @@
+<div class="background">
+  <div class="shape"></div>
+  <div class="shape"></div>
+</div>
+
+<form nz-form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="glass-form">
+  <h3>Inicio de Sesión</h3>
+
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="username">Usuario</nz-form-label>
+    <nz-form-control nzErrorTip="Por favor ingresa tu Usuario!">
+      <input nz-input formControlName="username" id="username" placeholder="Email or Phone" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="password">Contraseña</nz-form-label>
+    <nz-form-control [nzErrorTip]="passwordErrorTpl">
+      <input nz-input type="password" formControlName="password" id="password" placeholder="Password" />
+      <ng-template #passwordErrorTpl let-control>
+        @if (control.errors?.['required']) { Contraseña es requerida! }
+        @if (control.errors?.['invalidPassword']) { Contraseña debe cumplir con las condiciones! }
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+    </nz-form-control>
+  </nz-form-item>
+
+</form>

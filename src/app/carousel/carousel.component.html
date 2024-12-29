@@ -1,0 +1,19 @@
+<nz-carousel [nzEffect]="'scrollx'" [nzAutoPlay]="true">
+  <div nz-carousel-content *ngFor="let pokemon of pokemons" class="carousel-item">
+    <div class="content-wrapper">
+      <img [src]="pokemon.image" alt="{{ pokemon.name }}" class="pokemon-image" />
+      <p>{{ pokemon.name | titlecase }}</p>
+      <button nz-button nzType="primary" (click)="openModal(pokemon)" class="details-button">
+        Detalles
+      </button>
+    </div>
+  </div>
+</nz-carousel>
+
+<app-modal
+  *ngIf="selectedPokemon"
+  [pokemonName]="selectedPokemon.name"
+  [evolutionId]="selectedPokemon.id"
+  [details]="selectedPokemon.details"
+  (close)="closeModal()"
+></app-modal>
