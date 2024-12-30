@@ -47,7 +47,7 @@ body {
 /* Estilo para el formulario */
 .glass-form {
   height: 520px;
-  width: 400px;
+  width: 500px;
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
   transform: translate(-50%, -50%);
@@ -68,18 +68,35 @@ body {
   line-height: 42px;
   text-align: center;
   color: #ffffff;
+  margin-bottom: 50px;
 }
 
+/* Asegurar que las etiquetas y los inputs estén alineados */
 .glass-form nz-form-item {
-  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
 }
 
+.glass-form nz-form-label {
+  flex: 0 0 30%; /* Asigna un ancho fijo o relativo para las etiquetas */
+  text-align: right; /* Alinea el texto de la etiqueta a la derecha */
+  margin-right: 10px;
+}
+
+.glass-form nz-form-control {
+  flex: 1; /* Los inputs ocupan el resto del espacio */
+}
+
+.glass-form input {
+  width: 100%; /* Los inputs toman el 100% del espacio asignado */
+}
 .glass-form input::placeholder {
-  color: #e5e5e5;
+  color: #787272;
 }
 
 .glass-form button {
-  margin-top: 50px;
+  margin-top: 20px;
   width: 100%;
   background-color: #ffffff;
   color: #080710;
@@ -88,6 +105,17 @@ body {
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
+
+  /* Asegurar que el texto esté centrado */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: normal; /* Prevenir que el texto herede un line-height problemático */
+}
+
+.glass-form label{
+  color: #fafafa;
 }
 
 .glass-form .social {
@@ -110,3 +138,4 @@ body {
 .glass-form .social div:hover {
   background-color: rgba(255, 255, 255, 0.47);
 }
+

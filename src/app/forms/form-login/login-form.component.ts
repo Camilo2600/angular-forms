@@ -12,6 +12,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { ChangePasswordModalComponent } from '../../modals/modal-pass-change/pass.change.component'; // Importa el modal
+import { NzModalComponent } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-login-form',
@@ -22,7 +23,8 @@ import { ChangePasswordModalComponent } from '../../modals/modal-pass-change/pas
     NzFormModule,
     NzInputModule,
     NzButtonModule,
-    ChangePasswordModalComponent
+    ChangePasswordModalComponent,
+    NzModalComponent
   ],
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css']
@@ -106,11 +108,13 @@ export class LoginFormComponent implements OnInit {
   closeChangePasswordModal(): void {
     this.isChangePasswordModalVisible = false;
   }
-
-  onPasswordChange({ oldPassword, newPassword }: { oldPassword: string; newPassword: string }): void {
-    console.log('Old Password:', oldPassword);
-    console.log('New Password:', newPassword);
-    // Aquí puedes agregar la lógica para actualizar la contraseña.
+  onPasswordChange(data: { oldPassword: string; newPassword: string }): void {
+    console.log('Old Password:', data.oldPassword);
+    console.log('New Password:', data.newPassword);
+    // Implementa aquí la lógica para actualizar la contraseña.
     this.closeChangePasswordModal();
   }
+  
+  
+  
 }

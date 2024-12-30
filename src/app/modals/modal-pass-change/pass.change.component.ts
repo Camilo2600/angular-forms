@@ -13,14 +13,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class ChangePasswordModalComponent {
   @Output() close = new EventEmitter<void>();
-  @Output() changePassword = new EventEmitter<{ username: string; oldPassword: string; newPassword: string }>();
+  @Output() changePassword = new EventEmitter<{ oldPassword: string; newPassword: string }>();
 
   changePasswordForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.changePasswordForm = this.fb.group(
       {
-        username: ['', [Validators.required]],
         oldPassword: ['', [Validators.required]],
         newPassword: ['', [Validators.required, this.passwordValidator]],
         confirmPassword: ['', [Validators.required]],
@@ -59,11 +58,11 @@ export class ChangePasswordModalComponent {
 
   handleSubmit(): void {
     if (this.changePasswordForm.valid) {
-      const { username, oldPassword, newPassword } = this.changePasswordForm.value;
-      this.changePassword.emit({ username, oldPassword, newPassword });
-      this.handleClose();
+      const { oldPassword, newPassword } = this.changePasswordForm.value;
+      this.changePassword.emit({ oldPassword, newPassword }); // Emitir los datos
+      this.handleClose(); // Cerrar el modal
     } else {
-      Object.values(this.changePasswordForm.controls).forEach(control => {
+      Object.values(this.changePasswordForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity();
@@ -71,4 +70,6 @@ export class ChangePasswordModalComponent {
       });
     }
   }
+  
+  
 }

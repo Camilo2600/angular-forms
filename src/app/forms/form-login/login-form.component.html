@@ -9,14 +9,14 @@
   <nz-form-item>
     <nz-form-label nzRequired nzFor="username">Usuario</nz-form-label>
     <nz-form-control nzErrorTip="Por favor ingresa tu Usuario!">
-      <input nz-input formControlName="username" id="username" placeholder="Email or Phone" />
+      <input nz-input formControlName="username" id="username" placeholder="Usuario" />
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
     <nz-form-label nzRequired nzFor="password">Contraseña</nz-form-label>
     <nz-form-control [nzErrorTip]="passwordErrorTpl">
-      <input nz-input type="password" formControlName="password" id="password" placeholder="Password" />
+      <input nz-input type="password" formControlName="password" id="password" placeholder="Contraseña" />
       <ng-template #passwordErrorTpl let-control>
         @if (control.errors?.['required']) { Contraseña es requerida! }
         @if (control.errors?.['invalidPassword']) { Contraseña debe cumplir con las condiciones! }
@@ -30,4 +30,24 @@
     </nz-form-control>
   </nz-form-item>
 
+    <!-- Botón para abrir el modal de cambio de contraseña -->
+    <nz-form-item>
+      <nz-form-control>
+        <button nz-button nzType="default" (click)="openChangePasswordModal()">Cambiar Contraseña</button>
+      </nz-form-control>
+    </nz-form-item>
+
 </form>
+
+<nz-modal
+  *ngIf="isChangePasswordModalVisible"
+  [nzVisible]="true"
+  [nzTitle]="'Change Password'"
+  (nzOnCancel)="closeChangePasswordModal()">
+  <app-change-password-modal
+    (changePassword)="onPasswordChange($event)"
+    (close)="closeChangePasswordModal()">
+  </app-change-password-modal>
+</nz-modal>
+
+
