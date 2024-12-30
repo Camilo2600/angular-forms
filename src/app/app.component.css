@@ -79,7 +79,7 @@ nz-content {
   height: 100%;
 }
 /* Botón */
-.button {
+.details-button {
   margin-top: 10px;
   font-size: 16px;
   padding: 10px 24px;
@@ -93,7 +93,7 @@ nz-content {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.button:hover {
+.details-button:hover {
   background-color: #40a9ff; /* Azul más claro al pasar el mouse */
   transform: translateY(-3px); /* Efecto hover */
 }

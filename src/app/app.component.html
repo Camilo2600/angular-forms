@@ -37,8 +37,11 @@
           </ul>
         </li>
       </ul>
-      <button nz-button (click)="logout()">Cerrar Sesión</button>
-    </nz-sider>
+
+      
+      <button class="details-button" (click)="logout()">Cerrar Sesión</button>   
+      <button class="details-button" (click)="openChangePasswordModal()">Cambiar Contraseña</button>    </nz-sider>
+
     <nz-layout>
       <nz-header>
         <div class="app-header">
@@ -63,3 +66,14 @@
   <!-- Solo muestra el contenido del router en la ruta de login -->
   <router-outlet></router-outlet>
 </ng-template>
+
+<nz-modal
+  *ngIf="isChangePasswordModalVisible"
+  [nzVisible]="true"
+  [nzTitle]="'Change Password'"
+  (nzOnCancel)="closeChangePasswordModal()">
+  <app-change-password-modal
+    (changePassword)="onPasswordChange($event)"
+    (close)="closeChangePasswordModal()">
+  </app-change-password-modal>
+</nz-modal>
