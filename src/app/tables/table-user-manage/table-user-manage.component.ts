@@ -29,7 +29,8 @@ interface Client {
   standalone: true,
   imports: [NzTableModule, NzButtonModule, NzDividerModule, CommonModule, NzFormModule,
     ReactiveFormsModule, NzModalModule, FormsModule, NzOptionComponent,NzSelectModule], // Asegúrate de que estos módulos estén aquí
-  templateUrl: './table-user-manage.component.html'
+  templateUrl: './table-user-manage.component.html',
+  styleUrls: ['./table-user-manage.component.css'],
 })
 export class TableUserManageComponent {
   // Lista de datos de clientes
@@ -168,10 +169,11 @@ export class TableUserManageComponent {
 
   nameValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
-    if (!/^[a-zA-Z]{1,15}$/.test(value)) {
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{1,15}$/.test(value)) {
       return { invalidName: true };
     }
     return null;
   }
+  
   
 }

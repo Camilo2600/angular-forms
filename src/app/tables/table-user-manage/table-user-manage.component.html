@@ -33,11 +33,10 @@
     </tr>
   </tbody>
 </nz-table>
-
 <!-- Formulario de Cliente -->
-<form [formGroup]="clientForm" (ngSubmit)="onSubmit()" nz-form [nzLayout]="'vertical'">
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()" nz-form [nzLayout]="'vertical'" class="edit-form">
   <nz-form-item>
-    <nz-form-label [nzFor]="'cedula'" [nzRequired]="true">Cédula</nz-form-label>
+    <nz-form-label [nzFor]="'cedula'" [nzRequired]="true" >Cédula</nz-form-label>
     <nz-form-control [nzErrorTip]="'Cédula inválida'">
       <input id="cedula" nz-input formControlName="cedula" />
     </nz-form-control>
@@ -61,8 +60,8 @@
     <nz-form-label [nzFor]="'sexo'" [nzRequired]="true">Sexo</nz-form-label>
     <nz-form-control [nzErrorTip]="'Seleccione el sexo'">
       <select id="sexo" nz-input formControlName="sexo">
-        <option value="masculino">Masculino</option>
-        <option value="femenino">Femenino</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
       </select>
     </nz-form-control>
   </nz-form-item>
@@ -72,15 +71,3 @@
   </button>
 </form>
 
-<!-- Modal para cambiar el cargo -->
-<nz-modal 
-  [nzVisible]="isModalVisible" 
-  [nzTitle]="'Cambiar Cargo'" 
-  (nzOnCancel)="handleCancel()" 
-  (nzOnOk)="handleOk()">
-  <ng-container *nzModalContent>
-    <nz-select [(ngModel)]="selectedCargo">
-      <nz-option *ngFor="let cargo of cargos" [nzValue]="cargo" [nzLabel]="cargo"></nz-option>
-    </nz-select>
-  </ng-container>
-</nz-modal>

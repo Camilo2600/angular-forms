@@ -1,0 +1,54 @@
+.table-container {
+  max-height: calc(100vh - 128px); /* Ajusta la altura máxima para que encaje con otros componentes */
+  overflow-y: auto; /* Habilita el scroll vertical si el contenido excede la altura */
+  background-color: #f0f2f5; /* Fondo gris claro */
+  border: 1px solid #d9d9d9; /* Borde gris */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombras suaves para separación */
+  border-radius: 4px; /* Esquinas redondeadas */
+}
+
+.table-container nz-table {
+  background-color: #ffffff; /* Fondo blanco para las filas */
+}
+
+.table-container th {
+  background-color: #949494; /* Fondo gris para el encabezado */
+  color: #333333; /* Texto oscuro */
+  text-align: left;
+  font-weight: bold;
+}
+
+.table-container td {
+  color: #595959; /* Texto gris oscuro */
+}
+
+.table-container tr:nth-child(odd) {
+  background-color: #fafafa; /* Fondo alternado para filas impares */
+}
+
+.table-container tr:nth-child(even) {
+  background-color: #f5f5f5; /* Fondo alternado para filas pares */
+}
+
+nz-select, nz-modal {
+  display: block;
+}
+
+nz-modal {
+  background: #5d5e5f;
+  z-index: 1050; /* Asegúrate de que el fondo sea blanco o un color claro */
+}
+
+nz-select {
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.table-container tr.inactivo {
+  background-color: #f7df91 !important; /* Light yellow for inactive rows */
+}
+
+/* Estilo para las etiquetas de los campos requeridos */
+.edit-form ::ng-deep label.ant-form-item-required {
+  color: white !important; /* Cambia el color de los labels requeridos */
+}

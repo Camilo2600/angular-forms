@@ -18,7 +18,6 @@ import  { NzModalComponent } from 'ng-zorro-antd/modal';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  isCollapsed = false;
   isChangePasswordModalVisible = false;
 
   constructor(private router: Router) {}

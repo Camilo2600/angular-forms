@@ -5,6 +5,7 @@
   (nzOnOk)="handleSubmit()">
   <ng-container *nzModalContent>
     <form [formGroup]="changePasswordForm">
+      <!-- Campo Old Password -->
       <div class="form-group">
         <label for="oldPassword">Old Password</label>
         <input id="oldPassword" formControlName="oldPassword" type="password" class="nz-input" />
@@ -13,6 +14,7 @@
         </div>
       </div>
 
+      <!-- Campo New Password -->
       <div class="form-group">
         <label for="newPassword">New Password</label>
         <input id="newPassword" formControlName="newPassword" type="password" class="nz-input" />
@@ -21,6 +23,7 @@
         </div>
       </div>
 
+      <!-- Campo Confirm Password -->
       <div class="form-group">
         <label for="confirmPassword">Confirm Password</label>
         <input id="confirmPassword" formControlName="confirmPassword" type="password" class="nz-input" />

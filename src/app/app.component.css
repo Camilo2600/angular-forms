@@ -13,7 +13,11 @@
   position: relative;
   z-index: 10;
   min-height: 100vh;
-  box-shadow: 2px 0 6px rgba(0,21,41,.35);
+  box-shadow: 2px 0 6px rgba(2, 57, 108, 0.35);
+  background: #2d0f79;
+  border-color: rgb(255, 255, 255);
+  border-right-style: solid;
+
 }
 
 .header-trigger {
@@ -34,14 +38,14 @@
   padding-left: 24px;
   overflow: hidden;
   line-height: 64px;
-  background: #001529;
+  background: #2d0f79;
   transition: all .3s;
 }
 
 .sidebar-logo img {
   display: inline-block;
-  height: 32px;
-  width: 32px;
+  height: 60px;
+  width: 200px;
   vertical-align: middle;
 }
 
@@ -65,7 +69,7 @@ nz-header {
   position: relative;
   height: 64px;
   padding: 0;
-  background: #fff;
+  background: #2d0f79;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
 }
 
@@ -75,7 +79,7 @@ nz-content {
 
 .inner-content {
   padding: 24px;
-  background: #fff;
+  background:   #5d5e5f;
   height: 100%;
 }
 /* Botón */
@@ -85,7 +89,7 @@ nz-content {
   padding: 10px 24px;
   border: none;
   border-radius: 5px;
-  background-color: #1890ff; /* Azul principal de NG-ZORRO */
+  background-color: #1890ff; 
   color: #fff;
   font-weight: bold;
   cursor: pointer;
@@ -94,6 +98,10 @@ nz-content {
 }
 
 .details-button:hover {
-  background-color: #40a9ff; /* Azul más claro al pasar el mouse */
-  transform: translateY(-3px); /* Efecto hover */
+  background-color: #40a9ff; 
+  transform: translateY(-3px); 
+}
+
+.ant-layout {
+  background: #5d5e5f;
 }

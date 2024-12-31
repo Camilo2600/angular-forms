@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, NzButtonModule, ReactiveFormsModule, NzModalModule],
   templateUrl: './pass.change.component.html',
+  styleUrls: ['./pass.change.component.css']
 })
 export class ChangePasswordModalComponent {
   @Output() close = new EventEmitter<void>();

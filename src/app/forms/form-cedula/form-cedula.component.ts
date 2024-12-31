@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, ViewEncapsulation } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -22,7 +22,9 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
   standalone: true,
   imports: [ReactiveFormsModule, NzButtonModule, NzCheckboxModule, NzFormModule, NzInputModule, NzSelectModule],
   templateUrl: './form-cedula.component.html',
-  styleUrls: ['./form-cedula.component.css']
+  styleUrls: ['./form-cedula.component.css'],
+  encapsulation: ViewEncapsulation.None,
+
 })
 export class FormCedulaComponent implements OnInit {
   validateForm!: FormGroup;

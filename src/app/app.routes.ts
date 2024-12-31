@@ -12,9 +12,9 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'carousel', loadChildren: () => import('./carousel/carousel.routes').then(m => m.CAROUSEL_ROUTES) },
-      { path: 'table', loadChildren: () => import('./table-ajax/table.routes').then(m => m.TABLE_POKEAPI_ROUTES) },
+      { path: 'table', loadChildren: () => import('./tables/table-ajax/table.routes').then(m => m.TABLE_POKEAPI_ROUTES) },
       { path: 'form-cedula', loadChildren: () => import('./forms/form-cedula/form-cedula.routes').then(m => m.FORM_CEDULA_ROUTES) },
-      { path: 'user-manage', loadChildren: () => import('./table-user-manage/table-user.routes').then(m => m.USER_MANAGE_ROUTES) }
+      { path: 'user-manage', loadChildren: () => import('./tables/table-user-manage/table-user.routes').then(m => m.USER_MANAGE_ROUTES) }
     ]
   },
 

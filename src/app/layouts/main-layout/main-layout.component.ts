@@ -15,7 +15,7 @@ import { RouterOutlet } from '@angular/router';
   styles: [
     `
       header {
-        background: #333;
+        background: #black;
         color: white;
         padding: 1rem;
       }

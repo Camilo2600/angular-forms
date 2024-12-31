@@ -10,4 +10,8 @@
       .register-area {
         margin-bottom: 8px;
       }
-    
+
+     .ant-form-item-label > label {
+       color: white !important;
+      }
+      

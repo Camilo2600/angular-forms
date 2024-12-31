@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, NzButtonModule, NzModalModule],
   templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent implements OnChanges {
   @Input() pokemonName: string = '';
