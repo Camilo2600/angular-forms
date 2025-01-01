@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { ModalComponent } from '../modals/modal/modal.component';
-import { UserService } from '../user.service/user.service.component';
+import { UserService } from '../services/user.service/user.service.component';
 
 @Component({
   selector: 'app-pokemon-carousel',

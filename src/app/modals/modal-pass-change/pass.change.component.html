@@ -1,34 +1,34 @@
 <nz-modal 
   [nzVisible]="true" 
-  [nzTitle]="'Change Password'" 
+  [nzTitle]="'Cambio de Contraseña'" 
   (nzOnCancel)="handleClose()" 
   (nzOnOk)="handleSubmit()">
   <ng-container *nzModalContent>
     <form [formGroup]="changePasswordForm">
       <!-- Campo Old Password -->
       <div class="form-group">
-        <label for="oldPassword">Old Password</label>
+        <label for="oldPassword">Contraseña anterior</label>
         <input id="oldPassword" formControlName="oldPassword" type="password" class="nz-input" />
         <div *ngIf="changePasswordForm.controls['oldPassword'].hasError('required')" class="error">
-          Old password is required.
+          Contraseña anterior es requerida.
         </div>
       </div>
 
       <!-- Campo New Password -->
       <div class="form-group">
-        <label for="newPassword">New Password</label>
+        <label for="newPassword">Nueva contraseña</label>
         <input id="newPassword" formControlName="newPassword" type="password" class="nz-input" />
         <div *ngIf="changePasswordForm.controls['newPassword'].hasError('invalidPassword')" class="error">
-          Password must include upper case, lower case, a number, and a symbol.
+          Contraseña debe incluir mayúscula, minúscula, número y un símbolo.
         </div>
       </div>
 
       <!-- Campo Confirm Password -->
       <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
+        <label for="confirmPassword">Confirmar contraseña</label>
         <input id="confirmPassword" formControlName="confirmPassword" type="password" class="nz-input" />
         <div *ngIf="changePasswordForm.hasError('passwordMismatch')" class="error">
-          Passwords do not match.
+          Las contraseñas no coinciden.
         </div>
       </div>
     </form>

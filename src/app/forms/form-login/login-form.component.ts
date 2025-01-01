@@ -13,6 +13,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { ChangePasswordModalComponent } from '../../modals/modal-pass-change/pass.change.component'; // Importa el modal
 import { NzModalComponent } from 'ng-zorro-antd/modal';
+import { NotificationService  } from '../../services/user.notification.service/user.notification'; // Importa el servicio de notificaciones
+
 
 @Component({
   selector: 'app-login-form',
@@ -37,7 +39,9 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService 
+
   ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
@@ -55,8 +59,11 @@ export class LoginFormComponent implements OnInit {
         this.userList = users;
       },
       error: () => {
-        console.error('Error loading user.json');
-      }
+        this.notificationService.error(
+          'Error',
+          'No se pudo cargar la lista de usuarios'
+        );
+      },
     });
   }
 
@@ -84,12 +91,17 @@ export class LoginFormComponent implements OnInit {
       );
 
       if (user) {
-        // Simulación de autenticación: guarda un token en localStorage
         localStorage.setItem('authToken', 'yourAuthToken');
-        alert('Login successful!');
-        this.router.navigate(['/carousel']); // Redirige al menú principal
+        this.notificationService.success(
+          'Login Exitoso',
+          'Has iniciado sesión correctamente.'
+        );
+        this.router.navigate(['/carousel']);
       } else {
-        alert('Invalid username or password.');
+        this.notificationService.error(
+          'Error de Login',
+          'Usuario o contraseña inválidos.'
+        );
       }
     } else {
       Object.values(this.loginForm.controls).forEach((control) => {
@@ -98,6 +110,10 @@ export class LoginFormComponent implements OnInit {
           control.updateValueAndValidity();
         }
       });
+      this.notificationService.warning(
+        'Formulario Incompleto',
+        'Por favor, completa todos los campos requeridos.'
+      );
     }
   }
 
@@ -108,13 +124,10 @@ export class LoginFormComponent implements OnInit {
   closeChangePasswordModal(): void {
     this.isChangePasswordModalVisible = false;
   }
+
   onPasswordChange(data: { oldPassword: string; newPassword: string }): void {
     console.log('Old Password:', data.oldPassword);
     console.log('New Password:', data.newPassword);
-    // Implementa aquí la lógica para actualizar la contraseña.
     this.closeChangePasswordModal();
   }
-  
-  
-  
 }

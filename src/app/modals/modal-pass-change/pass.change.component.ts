@@ -4,6 +4,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NotificationService } from '../../services/user.notification.service/user.notification';
 
 @Component({
   selector: 'app-change-password-modal',
@@ -18,14 +19,19 @@ export class ChangePasswordModalComponent {
 
   changePasswordForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private notificationService: NotificationService
+    ) 
+
+    {
     this.changePasswordForm = this.fb.group(
       {
         oldPassword: ['', [Validators.required]],
         newPassword: ['', [Validators.required, this.passwordValidator]],
         confirmPassword: ['', [Validators.required]],
       },
-      { validators: this.passwordMatchValidator }
+      { validators: this.passwordMatchValidator },
     );
   }
 
@@ -61,6 +67,12 @@ export class ChangePasswordModalComponent {
     if (this.changePasswordForm.valid) {
       const { oldPassword, newPassword } = this.changePasswordForm.value;
       this.changePassword.emit({ oldPassword, newPassword }); // Emitir los datos
+      
+      this.notificationService.success(
+        'Cambio de contraseña exitoso',
+        'La contraseña se ha actualizado correctamente.'
+      );
+
       this.handleClose(); // Cerrar el modal
     } else {
       Object.values(this.changePasswordForm.controls).forEach((control) => {
@@ -69,6 +81,12 @@ export class ChangePasswordModalComponent {
           control.updateValueAndValidity();
         }
       });
+
+      this.notificationService.error(
+        'Error al Cambiar la Contraseña',
+        'Por favor, verifica los campos y asegúrate de que las contraseñas coincidan.'
+      );
+      
     }
   }
   

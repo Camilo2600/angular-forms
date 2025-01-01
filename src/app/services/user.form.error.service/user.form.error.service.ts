@@ -9,7 +9,7 @@ export class FormErrorService {
     Object.keys(formGroup.controls).forEach((field) => {
       const control = formGroup.get(field);
       if (control && control.invalid) {
-        console.error(`Error in field "${field}":`, control.errors);
+        console.error(`Error en el campo "${field}":`, control.errors);
       }
       if (control && control instanceof FormGroup) {
         this.logFormErrors(control); // Recursivo para controles anidados

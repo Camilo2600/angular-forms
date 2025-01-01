@@ -16,6 +16,8 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzFormModule, NzFormTooltipIcon } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NotificationService } from '../../services/user.notification.service/user.notification';
+import { FormErrorService } from '../../services/user.form.error.service/user.form.error.service';
 
 @Component({
   selector: 'app-form-cedula',
@@ -29,7 +31,14 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 export class FormCedulaComponent implements OnInit {
   validateForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    
+    private fb: FormBuilder,
+    private notificationService: NotificationService ,
+    private formErrorService: FormErrorService
+
+
+  ) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -48,11 +57,26 @@ export class FormCedulaComponent implements OnInit {
         phoneNumber: this.applyPhoneMask(this.validateForm.value.phoneNumber)
       };
       console.log('Submitted Data:', formData);
+
+      this.notificationService.success(
+        'Formulario llenado correctamente',
+        'El Formulario se ha enviado correctamente.'
+      );
+
     } else {
+      // Componente de manejo de errores
+      this.formErrorService.logFormErrors(this.validateForm);
+
       Object.values(this.validateForm.controls).forEach(control => {
         control.markAsDirty();
         control.updateValueAndValidity();
       });
+
+      this.notificationService.error(
+        'Formulario llenado incorrectamente',
+        'El Formulario no se ha enviado.'
+      );
+
     }
   }
 
